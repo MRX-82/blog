@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+{% block title %}Добавление пользователя{% endblock %}
+
+{% block content %}
+<h1>Новый пользователь</h1>
+<form method = "post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Зарегаться</button>
+</form>
+{% endblock %}

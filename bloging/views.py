@@ -8,6 +8,7 @@ from .models import LocalUser
 from .forms import UserForm
 
 from django.views.generic.edit import CreateView
+from djnago.contrib.auth.views import LoginView
 
 def index(request):
     prb = 'skusime to'
@@ -25,6 +26,14 @@ class RegistrationUser(CreateView):
         user.set_password(form.cleaned_data['password1'])
         user.save()
         return super().form_valid(form)
+
+
+class UserLoginView(LoginView):
+    """
+    Класс для авторизации пользователя по логину и паролю
+    """
+    template_name = "bloging/login.html"
+    redirect_field_name = "next"
 
 
 
