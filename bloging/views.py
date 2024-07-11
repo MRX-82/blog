@@ -8,7 +8,7 @@ from .models import LocalUser
 from .forms import UserForm
 
 from django.views.generic.edit import CreateView
-from djnago.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView
 
 def index(request):
     prb = 'skusime to'
