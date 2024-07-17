@@ -5,10 +5,12 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 # Create your models here.
 
 class LocalUser(AbstractUser):
+    """
+    Модель для сохранения в бд пользователя
+    """
     is_actevated = models.BooleanField(default=True)
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(max_length=28)
-    #password = models.CharField(max_length=56)
 
     groups = models.ManyToManyField(
         Group,

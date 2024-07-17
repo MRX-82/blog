@@ -5,9 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import LocalUser
 
 class UserForm(UserCreationForm):
-    #password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    #password2 = forms.CharField(label='Пароль еще раз', widget=forms.PasswordInput)
-
+    """
+    Форма для регистрации нового пользователя
+    """
     class Meta:
         model = LocalUser
         fields=('username', 'email', 'password1', 'password2')
+
+

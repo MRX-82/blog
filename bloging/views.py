@@ -9,13 +9,31 @@ from .forms import UserForm
 
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def index(request):
+    """
+    Функция представление для главной страницы
+    """
     prb = 'skusime to'
     context = {'PROBA': prb}
     return render(request, 'bloging/index.html', context)
 
+@login_required
+def damp_view(request):
+    """
+    пробник
+    """
+    print('Представление damp')
+    return render(request, 'bloging/damp.html')
+
+
 class RegistrationUser(CreateView):
+    """
+    Функция представление для регистрации нового пользователя
+    """
     template_name = 'bloging/registration_user.html'
     form_class = UserForm
     success_url = reverse_lazy('index')
@@ -33,7 +51,13 @@ class UserLoginView(LoginView):
     Класс для авторизации пользователя по логину и паролю
     """
     template_name = "bloging/login.html"
-    redirect_field_name = "next"
+    success_url = reverse_lazy('damp')
+
+    def get_success_url(self):
+        """
+        Пробничек
+        """
+        return self.success_url
 
 
 
