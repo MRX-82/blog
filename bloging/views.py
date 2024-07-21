@@ -58,6 +58,3 @@ class UserLoginView(LoginView):
         Пробничек
         """
         return self.success_url
-
-
-

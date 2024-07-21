@@ -11,5 +11,3 @@ class UserForm(UserCreationForm):
     class Meta:
         model = LocalUser
         fields=('username', 'email', 'password1', 'password2')
-
-
